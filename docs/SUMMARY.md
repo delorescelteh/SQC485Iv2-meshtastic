@@ -2,6 +2,7 @@
 
 * [快速開始](quickstart.md)
 * [SQC485Iv2 板子簡介](sqc485iv2.md)
+* [SQC485Iv2 硬體/Pinout（待補齊）](hardware.md)
 * [環境準備](setup.md)
 * [編譯 Meshtastic-device](build.md)
 * [燒錄（含降速到 115200）](flash.md)
