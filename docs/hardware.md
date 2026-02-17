@@ -24,6 +24,34 @@
     - LoRa.ANT
     - 另有 `2.4G_ANT`、`LoRa.ANT` 標示
 
+## Meshtastic（SX1262）腳位對應（已落地到韌體 variant）
+
+此對應目前採用 **HT-CT62 參考設計相容**的定義（已放進韌體 fork 的 `variants/esp32c3/sqc485iv2/variant.h`）：
+
+- `BUTTON_PIN` = **GPIO9**（原理圖 net：`GPIO9_USER_KEY`）
+- LED
+  - `LED_POWER` = **GPIO2**（原理圖註記：GPIO2 = LOW 時 LED 亮）
+
+SX1262：
+- `LORA_SCK`  = **GPIO10**
+- `LORA_MISO` = **GPIO6**
+- `LORA_MOSI` = **GPIO7**
+- `LORA_CS`   = **GPIO8**
+- `LORA_DIO1` = **GPIO3**
+- `LORA_RESET`= **GPIO5**
+- `LORA_BUSY` = **GPIO4**
+- `SX126X_DIO3_TCXO_VOLTAGE` = **1.8V**
+
+> 以上這組腳位也與我們先前從開機 log 看到的 `SPI.begin(SCK=10, MISO=6, MOSI=7, NSS=8)` 一致。
+
+## 電池量測（Battery measurement）
+
+- 依你目前的描述：**此板沒有 ADC 做電池電壓量測**。
+- 因此文件與韌體目前都不假設有電池電壓讀值（不做電量百分比顯示/校正）。
+- 如果未來硬體版本要加電量量測，建議走：
+  - 簡單：分壓到 ESP32-C3 ADC pin
+  - 更準：加 fuel gauge（例如 MAX17048/MAX17049）走 I2C
+
 ## 介面
 
 - RS485：`U5 SN65HVD1780DR`
