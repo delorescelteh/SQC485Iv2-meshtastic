@@ -14,6 +14,16 @@
 - 電池座：`BT1/BT2 MY-ZJ-110`（18650）
 - 3V3 LDO：`U3 XC6206P332MR`
 
+**POW_IN 端子（待補齊）**
+> 原理圖註記為 "POWER input (30 ~ 8 V) buck to 3V3"，尚缺每個 pin 的精確定義。
+
+| Pin | Net/名稱 | 功能 | 狀態 |
+| --- | --- | --- | --- |
+| 1 | TBD | TBD | 需由原理圖 pin 標號確認 |
+| 2 | TBD | TBD | 需由原理圖 pin 標號確認 |
+| 3 | TBD | TBD | 需由原理圖 pin 標號確認 |
+| 4 | TBD | TBD | 需由原理圖 pin 標號確認 |
+
 ## 主要模組
 
 - `U1 HT-CT62`（ESP32‑C3 + SX1262 模組/板）
@@ -28,19 +38,23 @@
 
 此對應目前採用 **HT-CT62 參考設計相容**的定義（已放進韌體 fork 的 `variants/esp32c3/sqc485iv2/variant.h`）：
 
-- `BUTTON_PIN` = **GPIO9**（原理圖 net：`GPIO9_USER_KEY`）
-- LED
-  - `LED_POWER` = **GPIO2**（原理圖註記：GPIO2 = LOW 時 LED 亮）
+**使用者按鍵 / LED**
+| 功能 | GPIO | 原理圖 net | 說明 |
+| --- | --- | --- | --- |
+| `BUTTON_PIN` | GPIO9 | `GPIO9_USER_KEY` | 使用者按鍵 |
+| `LED_POWER` | GPIO2 | `GPIO2` | GPIO2 = LOW 時 LED 亮 |
 
-SX1262：
-- `LORA_SCK`  = **GPIO10**
-- `LORA_MISO` = **GPIO6**
-- `LORA_MOSI` = **GPIO7**
-- `LORA_CS`   = **GPIO8**
-- `LORA_DIO1` = **GPIO3**
-- `LORA_RESET`= **GPIO5**
-- `LORA_BUSY` = **GPIO4**
-- `SX126X_DIO3_TCXO_VOLTAGE` = **1.8V**
+**SX1262 腳位對應**
+| 功能 | GPIO | 備註 |
+| --- | --- | --- |
+| `LORA_SCK` | GPIO10 | SPI SCK |
+| `LORA_MISO` | GPIO6 | SPI MISO |
+| `LORA_MOSI` | GPIO7 | SPI MOSI |
+| `LORA_CS` | GPIO8 | SPI CS/NSS |
+| `LORA_DIO1` | GPIO3 | IRQ |
+| `LORA_RESET` | GPIO5 | Reset |
+| `LORA_BUSY` | GPIO4 | Busy |
+| `SX126X_DIO3_TCXO_VOLTAGE` | 1.8V | TCXO 電壓設定 |
 
 > 以上這組腳位也與我們先前從開機 log 看到的 `SPI.begin(SCK=10, MISO=6, MOSI=7, NSS=8)` 一致。
 
@@ -60,6 +74,14 @@ SX1262：
 - I2C/UART 擴展端子：`CONN2 1.25-4PWB`
   - 原理圖上可見 net：`GND`, `3V3`, `LORA_RXD_SDA`, `LORA_TXD_SCL`
   - 命名暗示可作 UART（RXD/TXD）或 I2C（SDA/SCL）用途（待你確認最終定義）
+
+**CONN2 腳位表（待確認）**
+| Pin | Net | 推測用途 | 備註 |
+| --- | --- | --- | --- |
+| 1 | GND | Ground | 依原理圖網名 |
+| 2 | 3V3 | 電源輸出 | 依原理圖網名 |
+| 3 | LORA_RXD_SDA | UART RX / I2C SDA | 需確認最終定義 |
+| 4 | LORA_TXD_SCL | UART TX / I2C SCL | 需確認最終定義 |
 
 ## 使用者按鍵 / 指示
 
