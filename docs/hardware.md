@@ -91,8 +91,11 @@
 
 - 看到 `GPIO9_USER_KEY`、`GPIO2`（並註記："LED W on when GPIO2 = LOW"）
 
-## TODO（我下一步要補）
+## TODO（待補）
 
-- 把 **HT-CT62 的 GPIO 與 SX1262 的 SPI/IRQ/RESET/BUSY** 對應整理成表格
+**已完成**
+- 已整理 **HT-CT62 的 GPIO 與 SX1262 的 SPI/IRQ/RESET/BUSY** 對應表（見上方「Meshtastic（SX1262）腳位對應」）
+
+**待補**
 - 把 `POW_IN` 端子各 pin 定義（GND/VIN/RS485?）整理成表格
 - 用整理後的 pinout 在韌體 repo 裡新增真正的 `SQC485Iv2` variant（而不是暫時的 HT62-compatible env）
