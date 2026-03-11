@@ -3,7 +3,7 @@
 > 目前我已從 workspace 的原理圖 PDF 抓到「主要零件/網名/模組腳位清單」；
 > 但要做到完整 pinout（對應到 Meshtastic variant / board env）還需要把每條 net 再整理成表格。
 >
-> 原理圖（公開）放在本 repo：`assets/SCH_SQC485ISv200_2026-02-05.pdf`
+> 原理圖（公開）放在本 repo：`../assets/SCH_SQC485ISv200_2026-02-05.pdf`
 
 ## 供電架構（從原理圖文字可確認）
 
