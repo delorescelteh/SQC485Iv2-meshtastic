@@ -18,6 +18,8 @@
 2. **放大與截圖**
    - 針對每個連接器區塊放大至腳位標示清晰可讀
    - 以系統截圖存成 `assets/schematics/YYYYMMDD_pow_in_page.png`
+   - （可選）用 CLI 產生預覽縮圖：`./scripts/extract_pinout_preview.sh`
+     - Quick Look 只會輸出 **第一頁** 預覽，若需要其他頁面仍需用 Preview 手動另存
 3. **逐 pin 抄錄**
    - 依 `docs-meshtastic/docs/pinout_extraction_notes.md` 表格格式填入：
      - Pin 編號
