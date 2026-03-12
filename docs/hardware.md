@@ -16,6 +16,7 @@
 
 **POW_IN 端子（待補齊）**
 > 原理圖註記為 "POWER input (30 ~ 8 V) buck to 3V3"，尚缺每個 pin 的精確定義。
+> 可直接填寫：`docs/pow_in_pin_request.md`，並依 `docs-meshtastic/docs/pinout_extraction_workflow.md` 的流程補齊來源。
 
 | Pin | Net/名稱 | 功能 | 狀態 |
 | --- | --- | --- | --- |
