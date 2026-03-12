@@ -5,6 +5,7 @@
 ## 建議工具（不需額外安裝）
 - **macOS Preview**（內建）：可放大、標註、截圖
 - **Windows**：Edge / Acrobat Reader
+- **CLI fallback（無 PDF 工具時）**：`strings`（macOS 內建）
 
 ## 輸出檔案與命名
 - 原理圖截圖：`assets/schematics/YYYYMMDD_pow_in_page.png`
@@ -20,16 +21,21 @@
    - 以系統截圖存成 `assets/schematics/YYYYMMDD_pow_in_page.png`
    - （可選）用 CLI 產生預覽縮圖：`./scripts/extract_pinout_preview.sh`
      - Quick Look 只會輸出 **第一頁** 預覽，若需要其他頁面仍需用 Preview 手動另存
-3. **逐 pin 抄錄**
+3. **CLI fallback（無 PDF 工具時）**
+   - 可用 `strings` 粗略檢索文字標示，再回到 Preview 精確定位：
+     - `strings docs-meshtastic/assets/SCH_SQC485ISv200_2026-02-05.pdf | nl | grep -n "POW_IN"`
+     - `strings docs-meshtastic/assets/SCH_SQC485ISv200_2026-02-05.pdf | nl | grep -E "CONN2|GND|VIN"`
+   - 注意：`strings` 只能確認「文字是否存在」，**無法取代截圖定位**。
+4. **逐 pin 抄錄**
    - 依 `docs-meshtastic/docs/pinout_extraction_notes.md` 表格格式填入：
      - Pin 編號
      - Signal 名稱
      - Net / MCU 對應
      - 備註（例如：方向、GND/VIN、疑似對接）
-4. **交叉比對**
+5. **交叉比對**
    - 若 net 名稱對應到 MCU GPIO，補上 GPIO 編號
    - 遇到不確定之處，保留 `?` 並在備註註明疑點
-5. **回寫文件**
+6. **回寫文件**
    - 將確認後的 POW_IN / CONN2 pin 表填入：
      - `docs/hardware_pinout.md`
      - `docs-meshtastic/docs/hardware.md`
