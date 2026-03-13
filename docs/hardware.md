@@ -98,5 +98,8 @@
 - 已整理 **HT-CT62 的 GPIO 與 SX1262 的 SPI/IRQ/RESET/BUSY** 對應表（見上方「Meshtastic（SX1262）腳位對應」）
 
 **待補**
-- 把 `POW_IN` 端子各 pin 定義（GND/VIN/RS485?）整理成表格
-- 用整理後的 pinout 在韌體 repo 裡新增真正的 `SQC485Iv2` variant（而不是暫時的 HT62-compatible env）
+- 依 CONN2（UART/I2C）最終定義更新這份文件（目前僅先依原理圖網名標註）
+
+**已完成（後續驗證/同步中）**
+- `POW_IN` 端子各 pin 定義已整理成表格（見 `docs/hardware_pinout.md` 與本文件前文）
+- 已在韌體 repo 新增 `variants/esp32c3/sqc485iv2` 初版（待 CONN2 定義與 HW model id 最終確認後再調整）
